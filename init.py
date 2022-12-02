@@ -8,20 +8,28 @@ import logging
 from argparse import ArgumentParser
 
 logging.basicConfig(
-    level=logging.INFO, format="%(levelname)-8s %(funcName)s: %(message)s",
+    level=logging.INFO,
+    format="%(levelname)-8s %(funcName)s: %(message)s",
 )
 logger = logging.getLogger(__name__)
 
 
-def setup_dir(day, languages):
-    newdir = f"day{day:02d}"
+def setup_dir(year, day, languages):
+    yeardir = f"year{year}"
+    newdir = f"year{year}/day{day:02d}"
+    if not os.path.exists(yeardir):
+        os.mkdir(yeardir)
+        logger.info(f"created a new directory {yeardir}")
+
     if not os.path.exists(newdir):
         os.mkdir(newdir)
         logger.info(f"created a new directory {newdir}")
     lang_dirs = os.listdir("templates")
     for lang in languages:
         if lang not in lang_dirs:
-            logger.error(f"no template files found for {lang}; available: {', '.join(lang_dirs)}")
+            logger.error(
+                f"no template files found for {lang}; available: {', '.join(lang_dirs)}"
+            )
             continue
         template_dir = os.path.join("templates", lang)
         for file in os.listdir(template_dir):
@@ -40,7 +48,7 @@ def get_input(day, year):
         cookie = os.environ["AOC_SESSION"]
 
     url = "https://adventofcode.com/{}/day/{}/input".format(year, day)
-    dayfolder = f"day{day:02d}"
+    dayfolder = f"year{year}/day{day:02d}"
     if "input.txt" in os.listdir(dayfolder):
         logger.warning(f"{dayfolder}/input.txt already exists, skip download")
         return
@@ -72,6 +80,6 @@ if __name__ == "__main__":
     parser.add_argument("--no-download", dest="skip_download", action="store_true")
     args = parser.parse_args()
 
-    setup_dir(args.day, args.language)
+    setup_dir(args.year, args.day, args.language)
     if not args.skip_download:
         get_input(args.day, args.year)

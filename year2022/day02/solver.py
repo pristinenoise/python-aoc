@@ -10,15 +10,43 @@ measure_time = utils.stopwatch()
 
 @measure_time
 def parse(lines):
-    res = [line for line in lines]
+    res = [line.strip() for line in lines]
 
     return res
+
+
+results = {
+    "A X": 4,
+    "A Y": 8,
+    "A Z": 3,
+    "B X": 1,
+    "B Y": 5,
+    "B Z": 9,
+    "C X": 7,
+    "C Y": 2,
+    "C Z": 6,
+}
+
+results2 = {
+    "A X": 3,
+    "A Y": 4,
+    "A Z": 8,
+    "B X": 1,
+    "B Y": 5,
+    "B Z": 9,
+    "C X": 2,
+    "C Y": 6,
+    "C Z": 7,
+}
 
 
 # PART 1
 @measure_time
 def solve1(data):
     res = 0
+
+    for line in data:
+        res += results[line]
 
     return res
 
@@ -27,6 +55,9 @@ def solve1(data):
 @measure_time
 def solve2(data):
     res = 0
+
+    for line in data:
+        res += results2[line]
 
     return res
 

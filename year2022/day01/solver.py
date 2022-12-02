@@ -10,25 +10,39 @@ measure_time = utils.stopwatch()
 
 @measure_time
 def parse(lines):
-    res = [line for line in lines]
+    elves = []
+    elf = []
+    for line in lines:
+        line = line.strip()
+        if not line.strip():
+            elves.append(elf)
+            elf = []
+        else:
+            elf.append(int(line))
 
-    return res
+    elves.append(elf)
+
+    return elves
 
 
 # PART 1
 @measure_time
 def solve1(data):
-    res = 0
+    max_calories = 0
+    for elf in data:
+        calories = sum(elf)
+        max_calories = max(max_calories, calories)
 
-    return res
+    return max_calories
 
 
 # PART 2
 @measure_time
 def solve2(data):
-    res = 0
+    sorted_elves = sorted([sum(elf) for elf in data], reverse=True)
+    top3sum = sum(sorted_elves[0:3])
 
-    return res
+    return top3sum
 
 
 if __name__ == "__main__":

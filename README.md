@@ -6,6 +6,8 @@ Download today's puzzle input from [adventofcode](https://adventofcode.com), cre
 
 ### Requirements
  - python3
+ - poetry (https://python-poetry.org/docs/)
+ or you can install manually:
  - requests (`pip3 install requests`)
  - pytest (`pip3 install pytest`) (only if you solve puzzles in python)
  - if you want to get your puzzle input downloaded automatically,
@@ -33,6 +35,28 @@ $ export AOC_SESSION=your-session-id
 $ python3 init.py -l cpp
 ```
 
+### How to autorun the solve file:
+```
+poetry run shell-command --command='python "${watch_src_path}"' --patterns="*.py" --recursive year2022
+```
+
+### How to run a given day
+```bash
+poetry run python run.py  --help
+usage: run.py [-h] [-d DAY] [-y YEAR] [-l LANGUAGE [LANGUAGE ...]]
+
+options:
+  -h, --help            show this help message and exit
+  -d DAY, --day DAY
+  -y YEAR, --year YEAR
+  -l LANGUAGE [LANGUAGE ...], --language LANGUAGE [LANGUAGE ...]
+```
+
+### Coming soon
+* automated testing
+* less broken jank structure
+* linting
+ 
 ### Notes
 
 #### Python

@@ -1,9 +1,128 @@
-*__pycache__
-*.pytest_cache
-*.cache
-*.pyc
+*.py[cod]
+*.key
+*.zip
+**/__pycache__/*
+
+# Vim temp files
 *.swp
+
+# Emacs backups
+*~
+
+# VSCode
+.vscode
+
+# Ipython notebooks
+*.ipynb
+
+# Really irritating Mas OS X crap:
+*.DS_Store
+
+# C extensions
 *.o
-*.hi
-*solver
-aoc_session.sh
+*.so
+
+# Packages
+*.egg
+*.egg-info
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+node_modules
+npm-debug.log
+.installed.cfg
+
+# Installer logs
+pip-log.txt
+
+# Translations
+*.mo
+
+# Unit test / coverage reports
+.coverage
+.tox
+_trial_temp
+nosetests.xml
+coverage.xml
+cover/
+htmlcov/
+.cache
+.pytest_cache
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+# IDEA
+.idea/
+
+# Vagrant VM files
+.vagrant
+
+# Python virtualenv
+env/
+
+# Local settings
+**/.s3-manifest
+settings.cfg
+devops/*.retry
+devops/*.log
+
+# Production settings
+devops/settings/settings.production.cfg
+
+# Celery
+celerybeat.pid
+
+# Backups
+dumps/
+
+# Webassets
+freshebt/static/.webassets-cache/
+freshebt/static/gen/
+
+# Terraform backups
+infrastructure/**/*.backup
+.terraform
+
+# SSL certificates
+devops/ssl/sentry
+devops/ssl/jenkins
+devops/ssl/revive
+devops/ssl/pgsql-client
+
+# pid files.
+*.pid
+
+# geolite database
+GeoLite2-City.mmdb
+
+# uploaded files
+uploads/
+logs/
+tmp/
+
+# database dumps
+dumps/
+
+# helm deps
+devops/charts/*.tgz
+
+# generated kubeconfigs
+kubeconfig_*
+config-map-aws-auth_*
+decrypted/
+*.decrypted.yaml
+
+# Captured session content
+capture/
+
+# Profiler files
+.profile
+
+# Patch update
+!providers-test-app.zip
